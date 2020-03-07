@@ -102,7 +102,7 @@ class App extends Component {
                     </tbody>
                 </table>
 
-                <header2>My Courses</header2>
+                <header>My Courses</header>
                 <table>
                     <thead>
                     <tr>
