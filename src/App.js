@@ -70,11 +70,15 @@ class App extends Component {
 
 
     addCourse = (course) => {
-        const {myCourses} = this.state; // const myCourses  = this.state.myCourses;
-        myCourses.push(course);
+        const {myCourses} = this.state;
+        if (myCourses.filter(myCourses => myCourses.key === course.key).length === 0){
+            myCourses.push(course)
+        }
+
+
         this.setState({myCourses});
 
-    }
+    };
 
 
     deleteCourse = (myCourse) => {
@@ -131,12 +135,15 @@ class App extends Component {
 
         const {college, department, number, section, professor} = searchTerms;
 
-        return (college === '' || course.college === college || course.college.startsWith('CA')) && (department === '' || course.department === department)
-                && (number === '' || course.number === number || course.number.startsWith("11")) && (section === '' || course.section === section || course.section.startsWith('B'))
-                && (professor === '' || course.professor === professor || course.professor.startsWith('Su'));
+        return (college === '' ||  course.college.startsWith(college))
+                && (department === '' || course.department.startsWith(department))
+                && (number === '' || course.number.startsWith(number)) && (section === '' || course.section.startsWith(section))
+                && (professor === '' || course.professor.startsWith(professor));
 
-        
+
     };
+
+
 
 
 
